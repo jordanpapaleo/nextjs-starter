@@ -1,0 +1,17 @@
+[ignore]
+<PROJECT_ROOT>/.history/*
+<PROJECT_ROOT>/tmp
+<PROJECT_ROOT>/.git
+
+[include]
+<PROJECT_ROOT>/static/**/*.js
+
+[libs]
+
+[lints]
+
+[untyped]
+
+[options]
+esproposal.optional_chaining=enable
+sharedmemory.hash_table_pow=21

@@ -1,15 +1,40 @@
 {
-  "name": "learn-starter",
+  "name": "nextjs-example",
+  "description": "nextjs example using babel flow standardjs and prettier",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "npm run test:lint && npm run test:types",
+    "test:types": "$(npm bin)/flow",
+    "test:lint": "$(npm bin)/eslint .",
+    "test:lintfix": "$(npm bin)/eslint . --fix",
+    "fix": "$(npm bin)/eslint --cache --fix"
   },
   "dependencies": {
+    "lodash": "4.17.20",
     "next": "^10.0.0",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "prop-types": "15.7.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.12.10",
+    "@babel/preset-flow": "7.12.1",
+    "babel-eslint": "10.1.0",
+    "babel-plugin-flow-react-proptypes": "26.0.0",
+    "eslint-config-standard-jsx": "10.0.0",
+    "eslint-config-standard": "16.0.2",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-react": "7.22.0",
+    "eslint": "7.17.0",
+    "flow-bin": "0.142.0",
+    "prettier": "2.2.1"
   }
 }
