@@ -15,3 +15,6 @@
 [options]
 esproposal.optional_chaining=enable
 sharedmemory.hash_table_pow=21
+module.name_mapper='^common\/\(.*\)$' -> '<PROJECT_ROOT>/common/\1'
+module.name_mapper='^components\/\(.*\)$' -> '<PROJECT_ROOT>/components/\1'
+module.name_mapper='^pages\/\(.*\)$' -> '<PROJECT_ROOT>/pages/\1'

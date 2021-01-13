@@ -14,26 +14,30 @@
     "fix": "$(npm bin)/eslint --cache --fix"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "lodash": "4.17.20",
     "next": "^10.0.0",
+    "polished": "^4.0.5",
     "prop-types": "15.7.2",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "typography": "^0.16.19",
+    "typography-theme-lincoln": "^0.16.19"
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
     "@babel/preset-flow": "7.12.1",
     "babel-eslint": "10.1.0",
     "babel-plugin-flow-react-proptypes": "26.0.0",
-    "eslint-config-standard-jsx": "10.0.0",
+    "eslint": "7.17.0",
     "eslint-config-standard": "16.0.2",
+    "eslint-config-standard-jsx": "10.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-react": "7.22.0",
-    "eslint": "7.17.0",
     "flow-bin": "0.142.0",
     "prettier": "2.2.1"
   }

@@ -4,8 +4,8 @@ import StyleDefaults from 'components/StyleDefaults'
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Component {...pageProps} />
       <StyleDefaults />
+      <Component {...pageProps} />
     </>
   )
 }
