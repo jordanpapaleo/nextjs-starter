@@ -2,6 +2,8 @@ import classnames from 'classnames'
 import css from 'styled-jsx/css'
 import Link from 'next/link'
 
+import PageLayout from 'components/PageLayout'
+
 const FirstPost = (props) => {
   const {
     className,
@@ -9,11 +11,12 @@ const FirstPost = (props) => {
   } = props
 
   return (
-    <div className={classnames('FirstPost-component', className)} style={style}>
+    <PageLayout title='First Post' className={classnames('FirstPost-component', className)} style={style}>
       <h1>First Post</h1>
       <Link href='/'>Home</Link>
+      <img src='/assets/chair-lift.jpg' />
       <style jsx>{styles}</style>
-    </div>
+    </PageLayout>
   )
 }
 

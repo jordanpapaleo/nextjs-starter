@@ -3,25 +3,25 @@
 import * as React from 'react'
 import classnames from 'classnames'
 import css from 'styled-jsx/css'
-import Head from 'next/head'
 import Link from 'next/link'
+import PageLayout from 'components/PageLayout'
+import Content from 'components/Content'
 
 import type { ComponentPropsT } from 'common/types/general.types'
 
-const Home = (props: PropsT): React.Element<'div'> => {
+const Home = (props: PropsT): React.Element<any> => {
   const {
     className,
     style = {},
   } = props
 
   return (
-    <div className={classnames('Home-component', className)} style={style}>
-      <Head>
-        <title>NextJS Starter</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-
-      <main>
+    <PageLayout
+      className={classnames('Home-component', className)}
+      style={style}
+      title='NextJS Starter'
+    >
+      <Content variant='dark'>
         <h1>Heading 1</h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
@@ -33,8 +33,10 @@ const Home = (props: PropsT): React.Element<'div'> => {
             First Post
           </Link>
         </p>
+      </Content>
 
-        <div>
+      <Content variant='light'>
+        <div className='grid'>
           <a href='https://nextjs.org/docs'>
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -44,7 +46,11 @@ const Home = (props: PropsT): React.Element<'div'> => {
             <h3>Learn &rarr;</h3>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
+        </div>
+      </Content>
 
+      <Content variant='dark'>
+        <div className='grid'>
           <a
             href='https://github.com/vercel/next.js/tree/master/examples'
           >
@@ -61,27 +67,22 @@ const Home = (props: PropsT): React.Element<'div'> => {
             </p>
           </a>
         </div>
-      </main>
+      </Content>
 
       <style jsx>{styles}</style>
-    </div>
+    </PageLayout>
   )
 }
 
 const styles = css`
-  .Home-component {
-    display: flex;
-    flex-direction: column;
-    padding: 5vh 10vw;
-  }
-  main div {
+  .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: var(--content-vertical-spacing) var(--content-horizontal-spacing);
   }
-  main div a {
+  .grid a {
     padding: 3vh;
-    border: 1px solid var(--border);
+    border: var(--border);
     border-radius: var(--border-radius);
   }
 `
