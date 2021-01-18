@@ -26,7 +26,7 @@ const styles = css`
   .ResponsiveWidth-component {
     display: flex;
     justify-content: center;
-    padding: calc(2 * var(--content-vertical-spacing)) var(--content-horizontal-spacing);
+    padding: calc(2 * var(--vertical-spacing)) var(--horizontal-spacing);
   }
 
   .ResponsiveWidth-component-inner {

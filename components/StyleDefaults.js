@@ -4,7 +4,7 @@ import * as React from 'react'
 import css from 'styled-jsx/css'
 import Typography from 'typography'
 import lincolnTheme from 'typography-theme-lincoln'
-import { darken } from 'polished'
+import { darken, lighten } from 'polished'
 
 type PropsT = {}
 
@@ -17,18 +17,29 @@ const StyleDefaults = (props: PropsT): React.Element<'div'> => (
 const typography = new Typography(lincolnTheme)
 
 // https://www.htmlcsscolor.com
-const colors = {
+export const colors = {
   black: '#000000',
-  nightRider: '#333333',
-  matterhorn: '#575757',
-  persianBlue: '#143CDC',
-  dodgerBlue: '#157DFB',
-  kellyGreen: '#3CDC14',
+  blackRussian: '#1d1d1f',
   crimson: '#DC143C',
-  sunFlower: '#DCB414',
+  dodgerBlue: '#157DFB',
+  dodgerBlueDark: (darken(0.20, '#157DFB'): string),
+  dodgerBlueLight: (lighten(0.20, '#157DFB'): string),
   ghostWhite: '#FBFBFD',
-  lightGrey: '#D6D6D6',
+  kellyGreen: '#3CDC14',
+  lavender: '#e8e8ed',
+  paynesGrey: '#424245',
+  persianBlue: '#143CDC',
+  quartz: '#d2d2d7',
+  revolver: '#353538',
+  sunFlower: '#DCB414',
   white: '#FFFFFF',
+}
+
+export const breakpoints = {
+  small: '480px',
+  medium: '768px',
+  large: '1024px',
+  xlarge: '1600px',
 }
 
 const styles = css.global`
@@ -36,31 +47,33 @@ const styles = css.global`
     --animDuration: 0.3s;
     --animEase: ease;
 
+    --primary: ${colors.dodgerBlue};
+    --primary-dark: ${colors.dodgerBlueDark};
+    --primary-light: ${colors.dodgerBlueLight};
+    --primary-neutral: ${colors.blackRussian};
+    --secondary: ${colors.lavender};
+    --secondary-alpha: rgba(0, 0, 0, 0.08);
+
     /* Color Uses */
     --background-dark: ${colors.black};
     --background-light: ${colors.ghostWhite};
     --background: var(--background-light);
-    --border-dark: #424245;
-    --border-light: #d2d2d7;
+    --border-dark: ${colors.paynesGrey};
+    --border-light: ${colors.quartz};
     --border-radius: 8px;
     --border-color: var(--border-light);
     --border: 1px solid var(--border-color);
-    --copy-dark: #1d1d1f;
-    --copy-light: #f5f5f7;
+    --copy-dark: ${colors.blackRussian};
+    --copy-light: ${colors.ghostWhite};
     --copy: var(--copy-dark);
-
-    --primary: ${colors.dodgerBlue};
-    --primary-neutral: #18181A;
-    --secondary: #e8e8ed;
-    --secondary-alpha: rgba(0, 0, 0, 0.08);
+    --link: var(--primary);
+    --link-hover: var(--primary-dark);
 
     /* Status Colors */
     --error: ${colors.crimson};
     --info: ${colors.persianBlue};
     --success: ${colors.kellyGreen};
     --warn: ${colors.sunFlower};
-
-    --brandDark: ${darken(0.25, colors.dodgerBlue)};
 
     /* Fonts */
     --font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -69,49 +82,41 @@ const styles = css.global`
     /* Spacing */
     --form-horizontal-spacing: 15px;
     --form-vertical-spacing: 18px;
-    --content-horizontal-spacing: 20px;
-    --content-vertical-spacing: 24px;
+    --horizontal-spacing: 20px;
+    --vertical-spacing: 24px;
 
-    --test-color: hotpink;
+    /* Responsive */
+    --screen-small-min-width: ${breakpoints.small};
+    --screen-medium-min-width: ${breakpoints.medium};
+    --screen-large-min-width: ${breakpoints.large};
+    --screen-xlarge-min-width: ${breakpoints.xlarge};
   }
 
-    /* mobile */
-  @media (max-width: 480px) {
+  @media screen and (min-width: ${breakpoints.small}) {
     :root {
-      --max-width: 480px;
-      --test-color: red;
+      --max-width: var(--screen-small-min-width);
+      --test-color: var(--error);
     }
   }
 
-  /* tablets */
-  @media (min-width: 481px, max-width: 768px) {
+  @media screen and (min-width: ${breakpoints.medium}) {
     :root {
-      --max-width: 480px;
-      --test-color: orange;
+      --max-width: var(--screen-medium-min-width);
+      --test-color: var(--info);
     }
   }
 
-  /* laptops */
-  @media (min-width: 769px, max-width: 1024px) {
+  @media screen and (min-width: ${breakpoints.large}) {
     :root {
-      --max-width: 768px;
-      --test-color: yellow;
+      --max-width: var(--screen-large-min-width);
+      --test-color: var(--success);
     }
   }
 
-  /* desktops */
-  @media (min-width: 1025px, max-width: 1200px) {
+  @media screen and (min-width: ${breakpoints.xlarge}) {
     :root {
-      --max-width: 1024px;
-      --test-color: green;
-    }
-  }
-
-  /* large screens */
-  @media (min-width: 1201px) {
-    :root {
-      --max-width: 1200px;
-      --test-color: blue;
+      --max-width: var(--screen-xlarge-min-width);
+      --test-color: var(--warn);
     }
   }
 
@@ -122,8 +127,9 @@ const styles = css.global`
     --border-color: var(--border-light);
     --border: 1px solid var(--border-color);
     --copy: var(--copy-dark);
-    --primary-neutral: #18181A;
-    --secondary: #e8e8ed;
+    --link-hover: var(--primary-dark);
+    --primary-neutral: ${colors.blackRussian};
+    --secondary: ${colors.lavender};
   }
 
   .dark-mode {
@@ -131,8 +137,9 @@ const styles = css.global`
     --border-color: var(--border-dark);
     --border: 1px solid var(--border-color);
     --copy: var(--copy-light);
-    --primary-neutral: white;
-    --secondary: #353538;
+    --link-hover: var(--primary-light);
+    --primary-neutral: ${colors.white};
+    --secondary: ${colors.revolver};
   }
 
   * {
@@ -159,7 +166,7 @@ const styles = css.global`
 
   a {
     background-image: none;
-    color: var(--primary);
+    color: var(--link);
     cursor: pointer;
     text-decoration: none;
     transition: color var(--animDuration) var(--animEase);
@@ -167,8 +174,12 @@ const styles = css.global`
     font-weight: bold;
   }
 
+  a:visited {
+    color: var(--link);
+  }
+
   a:hover {
-    color: var(--linkHover);
+    color: var(--link-hover);
   }
 `
 

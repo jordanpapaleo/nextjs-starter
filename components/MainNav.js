@@ -37,8 +37,9 @@ const styles = css`
   }
   header {
     position: sticky;
-    padding-top: var(--content-vertical-spacing);
-    padding-bottom: var(--content-vertical-spacing);
+    padding-top: var(--vertical-spacing);
+    padding-bottom: var(--vertical-spacing);
+    background: var(--test-color);
   }
   nav {
     display: flex;

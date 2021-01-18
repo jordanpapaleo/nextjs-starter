@@ -3,6 +3,7 @@ import * as React from 'react'
 import classnames from 'classnames'
 import css from 'styled-jsx/css'
 import PageLayout from 'components/PageLayout'
+import Content from 'components/Content'
 
 import type { ComponentPropsT } from 'common/types/general.types'
 
@@ -14,7 +15,10 @@ const Contact = (props: PropsT): React.Element<any> => {
 
   return (
     <PageLayout className={classnames('Contact-component', className)} style={style}>
-      Contact
+      <Content>
+        Contact
+      </Content>
+
       <style jsx>{styles}</style>
     </PageLayout>
   )

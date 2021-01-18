@@ -24,8 +24,8 @@ const Footer = (props: PropsT): React.Element<'footer'> => {
 
 const styles = css`
   footer {
-    padding-top: var(--content-vertical-spacing);
-    padding-bottom: var(--content-vertical-spacing);
+    padding-top: var(--vertical-spacing);
+    padding-bottom: var(--vertical-spacing);
   }
 `
 

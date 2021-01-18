@@ -19,7 +19,7 @@ const Home = (props: PropsT): React.Element<any> => {
     <PageLayout
       className={classnames('Home-component', className)}
       style={style}
-      title='NextJS Starter'
+      title='Home'
     >
       <Content variant='dark'>
         <h1>Heading 1</h1>
@@ -78,7 +78,7 @@ const styles = css`
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: var(--content-vertical-spacing) var(--content-horizontal-spacing);
+    grid-gap: var(--vertical-spacing) var(--horizontal-spacing);
   }
   .grid a {
     padding: 3vh;

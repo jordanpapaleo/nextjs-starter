@@ -19,7 +19,7 @@ const PageLayout = (props: PropsT): React.Element<'div'> => {
   return (
     <div className={classnames('PageLayout-component', className)} style={style}>
       <Head>
-        {title && <title>{title}</title>}
+        <title>{title || 'Deafult Title'}</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
