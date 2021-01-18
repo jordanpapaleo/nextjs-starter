@@ -7,6 +7,23 @@ import ResponsiveWidth from 'components/ResponsiveWidth'
 
 import type { ComponentPropsT } from 'common/types/general.types'
 
+const links = {
+  main: {
+    label: 'My App',
+    href: '/',
+  },
+  routes: [
+    {
+      label: 'About',
+      href: '/about',
+    },
+    {
+      label: 'Contact',
+      href: '/contact',
+    },
+  ],
+}
+
 const MainNav = (props: PropsT): React.Element<'header'> => {
   const {
     className,
@@ -17,10 +34,13 @@ const MainNav = (props: PropsT): React.Element<'header'> => {
     <header className={classnames('MainNav-component', className)} style={style}>
       <ResponsiveWidth style={{ paddingTop: 0, paddingBottom: 0 }}>
         <nav className='nav-content'>
-          <Link href='/'>My App</Link>
-          <span />
-          <Link href='/about'>About</Link>
-          <Link href='/contact'>Contact</Link>
+          <Link href={links.main.href}>{links.main.label}</Link>
+
+          <span className='spacer' />
+
+          {links.routes.map((route) => (
+            <Link href={route.href} key={route.href}>{route.label}</Link>
+          ))}
         </nav>
       </ResponsiveWidth>
       <style jsx>{styles}</style>
@@ -47,7 +67,7 @@ const styles = css`
     justify-content: space-between;
     width: 100%;
   }
-  span {
+  .spacer {
     flex-grow: 1;
   }
 `

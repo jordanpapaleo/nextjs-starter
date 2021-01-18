@@ -36,7 +36,7 @@ export const colors = {
 }
 
 export const breakpoints = {
-  small: '480px',
+  small: '480px', // uses carot menu
   medium: '768px',
   large: '1024px',
   xlarge: '1600px',
@@ -147,8 +147,9 @@ const styles = css.global`
   }
 
   body, html {
-    color: var(--copy);
     background-color: var(--background);
+    border: var(--border);
+    color: var(--copy);
     font-family: var(--font-family);
     font-size: 16px;
     font-weight: 400;
@@ -156,7 +157,6 @@ const styles = css.global`
     line-height: var(--line-height);
     min-height: 100vh;
     text-rendering: auto;
-    border: var(--border);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -168,10 +168,10 @@ const styles = css.global`
     background-image: none;
     color: var(--link);
     cursor: pointer;
-    text-decoration: none;
-    transition: color var(--animDuration) var(--animEase);
-    text-shadow: none;
     font-weight: bold;
+    text-decoration: none;
+    text-shadow: none;
+    transition: color var(--animDuration) var(--animEase);
   }
 
   a:visited {
