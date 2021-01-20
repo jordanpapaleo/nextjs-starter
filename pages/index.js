@@ -1,16 +1,18 @@
-
 // @flow
 import * as React from 'react'
 import classnames from 'classnames'
 import css from 'styled-jsx/css'
 import Link from 'next/link'
-import PageLayout from 'components/PageLayout'
-import Content from 'components/Content'
 
-import type { ComponentPropsT } from 'common/types/general.types'
+import { getSortedPostsData } from 'lib/posts'
+import Content from 'components/Content'
+import PageLayout from 'components/PageLayout'
+
+import type { StaticPropsContextT, StaticPropsReturnT, ComponentPropsT } from 'common/types/general.types'
 
 const Home = (props: PropsT): React.Element<any> => {
   const {
+    allPostsData,
     className,
     style = {},
   } = props
@@ -21,6 +23,21 @@ const Home = (props: PropsT): React.Element<any> => {
       style={style}
       title='Home'
     >
+      <Content>
+        <ul>
+          {allPostsData.map(({ id, date, title }) => (
+            <li key={id}>
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
+              <br />
+              <small>{date}</small>
+            </li>
+          ))}
+        </ul>
+
+      </Content>
+
       <Content variant='dark'>
         <h1>Heading 1</h1>
         <h2>Heading 2</h2>
@@ -87,6 +104,49 @@ const styles = css`
   }
 `
 
-type PropsT = ComponentPropsT & {}
+type PropsT = ComponentPropsT & {
+  allPostsData: any[]
+}
 
 export default Home
+
+/*
+Next.js will pre-render this page at build time using the props returned by getStaticProps.
+
+You should use getStaticProps if:
+- The data required to render the page is available at build time ahead of a user’s request.
+- The data comes from a headless CMS.
+- The data can be publicly cached (not user-specific).
+- The page must be pre-rendered (for SEO) and be very fast — getStaticProps generates HTML and JSON files, both of which can be cached by a CDN for performance.
+*/
+
+type StaticPropsT = StaticPropsReturnT & {
+  props: {
+    allPostsData: any[]
+  }
+}
+
+export async function getStaticProps(context: StaticPropsContextT): Promise<StaticPropsT> {
+  console.log(context)
+
+  const allPostsData = getSortedPostsData()
+
+  return {
+    props: {
+      allPostsData,
+    },
+  }
+}
+
+/*
+  If you need to fetch data at request time instead of at build time, you can try Server-side Rendering:
+  You should use getServerSideProps only if you need to pre-render a page whose data must be fetched at request time.
+*/
+
+// export async function getServerSideProps(context) {
+//   return {
+//     props: {
+//       // props for your component
+//     },
+//   }
+// }

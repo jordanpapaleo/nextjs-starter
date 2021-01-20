@@ -1,12 +1,11 @@
 // import App from 'next/app'
-import StyleDefaults from 'components/StyleDefaults'
+import UiWrapper from 'components/UiWrapper'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <StyleDefaults />
+    <UiWrapper>
       <Component {...pageProps} />
-    </>
+    </UiWrapper>
   )
 }
 
